@@ -1,1 +1,1 @@
-# identify-similar-images
+# Identify similar images
