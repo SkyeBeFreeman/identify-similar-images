@@ -2,7 +2,6 @@
 
 - 利用直方图距离计算图片相似度
 
-
 计算公式：
 
 <img src="http://chart.googleapis.com/chart?cht=tx&chl=Sim(G,S)=\frac{1}{N}\sum_{i=1}^{N}{(1-\frac{|g_i-s_i|}{Max(g_i,s_i)})}" style="border:none;">
@@ -15,6 +14,7 @@
 
 
 <br>
+
 > Use the related libraries:
 >
 > PIL
