@@ -1,9 +1,24 @@
 # Identify similar images
 
-Use the related libraries:
+- 利用直方图距离计算图片相似度
 
-PIL
 
-matplotlib
+计算公式：
+$$
+Sim(G,S)=\frac{1}{N}\sum_{i=1}^{N}{(1-\frac{|g_i-s_i|}{Max(g_i,s_i)})}
+$$
+其中，G和S为两张图片的图像颜色分布直方图，N为颜色空间样点数。
 
-numpy
+
+
+待续……
+
+
+
+> Use the related libraries:
+>
+> PIL
+>
+> matplotlib
+>
+> numpy
