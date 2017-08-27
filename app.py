@@ -1,6 +1,7 @@
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
+from multiprocessing import Process
 
 def regularizeImage(img, size = (256, 256)):
     return img.resize(size).convert('RGB')
@@ -34,6 +35,12 @@ def calMultipleHistogramSimilarity(img1, img2):
         answer += calSingleHistogramSimilarity(sub_img1.histogram(), sub_img2.histogram())
     return float(answer / 16.0)
 
+def drawHistogram(hg1, hg2):
+    plt.plot(range(len(hg1)), hg1, color='blue', linewidth=1.5, label='img1')
+    plt.plot(range(len(hg2)), hg2, color='red', linewidth=1.5, label='img2')
+    plt.legend(loc='upper left')
+    plt.show()
+
 if __name__ == '__main__':
 
     # read regularized images
@@ -51,11 +58,9 @@ if __name__ == '__main__':
     # print(img2.histogram())
     print('img2的样本点有', len(hg2), '个')
 
-    # draw the histogram
-    plt.plot(range(len(hg1)), hg1, color='blue', linewidth=1.5, label='img1')
-    plt.plot(range(len(hg2)), hg2, color='red', linewidth=1.5, label='img2')
-    plt.legend(loc='upper left')
-    plt.show()
+    # draw the histogram with no-blocking
+    sub_thread = Process(target=drawHistogram, args=(hg1, hg2,))
+    sub_thread.start()
 
     # print the similarity
-    print(calMultipleHistogramSimilarity(img1, img2))
+    print('依据图片直方图距离计算相似度：', calMultipleHistogramSimilarity(img1, img2))
