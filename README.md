@@ -9,11 +9,12 @@
 
 其中，G和S为两张图片的图像颜色分布直方图，N为颜色空间样点数。
 
+<br><br>
 
 待续……
 
 
-
+<br>
 > Use the related libraries:
 >
 > PIL
