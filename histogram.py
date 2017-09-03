@@ -1,5 +1,17 @@
 import matplotlib.pyplot as plt
 
+# 正则化图像
+def regularizeImage(img, size = (256, 256)):
+    return img.resize(size).convert('RGB')
+
+# 画出直方图图像
+def drawHistogram(hg1, hg2):
+    plt.plot(range(len(hg1)), hg1, color='blue', linewidth=1.5, label='img1')
+    plt.plot(range(len(hg2)), hg2, color='red', linewidth=1.5, label='img2')
+    plt.legend(loc='upper left')
+    plt.title('Histogram Similarity')
+    plt.show()
+
 # 分块图像4x4
 def splitImage(img, part_size = (64, 64)):
     w, h = img.size
@@ -29,9 +41,4 @@ def calMultipleHistogramSimilarity(img1, img2):
         answer += calSingleHistogramSimilarity(sub_img1.histogram(), sub_img2.histogram())
     return float(answer / 16.0)
 
-def drawHistogram(hg1, hg2):
-    plt.plot(range(len(hg1)), hg1, color='blue', linewidth=1.5, label='img1')
-    plt.plot(range(len(hg2)), hg2, color='red', linewidth=1.5, label='img2')
-    plt.legend(loc='upper left')
-    plt.title('Histogram Similarity')
-    plt.show()
+__all__=['regularizeImage', 'drawHistogram', 'calMultipleHistogramSimilarity']
