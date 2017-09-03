@@ -15,7 +15,7 @@
 
 <br>
 
-> Use the related libraries:
+Use the related libraries:
 >
 > PIL
 >
