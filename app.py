@@ -1,6 +1,6 @@
 from PIL import Image
 from multiprocessing import Process
-import histogram
+import histogram as htg
 
 def regularizeImage(img, size = (256, 256)):
     return img.resize(size).convert('RGB')
@@ -22,8 +22,8 @@ if __name__ == '__main__':
     print('img2的样本点有', len(hg2), '个')
 
     # draw the histogram with no-blocking
-    sub_thread = Process(target=histogram.drawHistogram, args=(hg1, hg2,))
+    sub_thread = Process(target=htg.drawHistogram, args=(hg1, hg2,))
     sub_thread.start()
 
     # print the similarity
-    print('依据图片直方图距离计算相似度：', histogram.calMultipleHistogramSimilarity(img1, img2))
+    print('依据图片直方图距离计算相似度：', htg.calMultipleHistogramSimilarity(img1, img2))
