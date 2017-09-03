@@ -33,4 +33,5 @@ def drawHistogram(hg1, hg2):
     plt.plot(range(len(hg1)), hg1, color='blue', linewidth=1.5, label='img1')
     plt.plot(range(len(hg2)), hg2, color='red', linewidth=1.5, label='img2')
     plt.legend(loc='upper left')
+    plt.title('Histogram Similarity')
     plt.show()

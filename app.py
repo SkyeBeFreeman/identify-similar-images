@@ -10,7 +10,6 @@ if __name__ == '__main__':
     # read regularized images
     img1 = regularizeImage(Image.open('img1.jpg'))
     img2 = regularizeImage(Image.open('img2.jpg'))
-    
     # img1.show()
     # img2.show()
 
