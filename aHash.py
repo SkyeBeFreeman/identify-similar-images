@@ -37,4 +37,4 @@ def calaHashSimilarity(img1, img2):
     hc2 = getHashCode(img2)
     return compHashCode(hc1, hc2)
 
-__all__=['calaHashSimilarity']
+__all__ = ['calaHashSimilarity']

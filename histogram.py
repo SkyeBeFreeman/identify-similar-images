@@ -41,4 +41,4 @@ def calMultipleHistogramSimilarity(img1, img2):
         answer += calSingleHistogramSimilarity(sub_img1.histogram(), sub_img2.histogram())
     return float(answer / 16.0)
 
-__all__=['regularizeImage', 'drawHistogram', 'calMultipleHistogramSimilarity']
+__all__ = ['regularizeImage', 'drawHistogram', 'calMultipleHistogramSimilarity']

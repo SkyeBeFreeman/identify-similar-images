@@ -62,6 +62,14 @@ def DCT(matrix):
     DCT_matrix = getMultiply(matrix, AT)
     return DCT_matrix
 
+# 计算左上角8*8并转化为list
+def submatrix_list(matrix, size = (8, 8)):
+    value = []
+    for i in range(size[1]):
+        for j in range(size[2]):
+            value.append(matrix[i][j])
+    return value
+
 # 计算感知哈希算法相似度
 def calpHashSimilarity(img1, img2):
     img1 = regularizeImage(img1)
@@ -73,9 +81,11 @@ def calpHashSimilarity(img1, img2):
     DCT1 = DCT(matrix1)
     DCT2 = DCT(matrix2)
     
+    sub_list1 = submatrix_list(DCT1)
+    sub_list2 = submatrix_list(DCT2)
 
     hc1 = getHashCode(img1)
     hc2 = getHashCode(img2)
     return compHashCode(hc1, hc2)
 
-__all__=['calpHashSimilarity']
+__all__ = ['calpHashSimilarity']
