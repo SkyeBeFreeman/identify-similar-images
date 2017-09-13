@@ -25,7 +25,7 @@
 
 1. 缩放图片：一般大小为32*32，这样方便DCT计算
 2. 简化色彩，转化为灰度图：可以使用Image的convert('L')方法
-3. 计算DCT（离散余弦变换）:
+3. 计算DCT（[离散余弦变换](https://en.wikipedia.org/wiki/Discrete_cosine_transform)）:
     > 获得图像的二维数据矩阵f(x,y)
     >
     > 求离散余弦变换的系数矩阵[A]
