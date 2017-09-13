@@ -11,8 +11,8 @@ def getMatrix(img):
     size = img.size
     for i in range(size[1]):
         pixel = []
-        for j in range[0]:
-            pixel.append(img.getpixel(j, i))
+        for j in range(size[0]):
+            pixel.append(img.getpixel((j, i)))
         matrix.append(pixel)
     return matrix
 
@@ -37,7 +37,7 @@ def getTranspose(matrix):
     for i in range(len(matrix)):
         value = []
         for j in range(len(matrix[i])):
-            value.append(matrix[j], [i])
+            value.append(matrix[j][i])
         new_matrix.append(value)
     return new_matrix
 
@@ -66,8 +66,8 @@ def DCT(matrix):
 # 计算左上角8*8并转化为list
 def submatrix_list(matrix, size = (8, 8)):
     value = []
-    for i in range(size[1]):
-        for j in range(size[2]):
+    for i in range(size[0]):
+        for j in range(size[1]):
             value.append(matrix[i][j])
     return value
 
@@ -75,7 +75,23 @@ def submatrix_list(matrix, size = (8, 8)):
 def getHashCode(sub_list):
     length = len(sub_list)
     mean = sum(sub_list) / length
-    return mean
+    
+    result = []
+    for i in sub_list:
+        if i > mean:
+            result.append(1)
+        else:
+            result.append(0)
+
+    return result
+
+# 比较hash值
+def compHashCode(hc1, hc2):
+    cnt = 0
+    for i, j in zip(hc1, hc2):
+        if i == j:
+            cnt += 1
+    return cnt
 
 # 计算感知哈希算法相似度
 def calpHashSimilarity(img1, img2):
@@ -98,7 +114,7 @@ def calpHashSimilarity(img1, img2):
 # 单元测试
 class TestpHash(unittest.TestCase):
     def test_getHashCode(self):
-        self.assertEqual(getHashCode([1, 2, 3]), 2.0)
+        self.assertEqual(getHashCode([1, 2, 3]), [0, 0, 1])
 
 if __name__ == '__main__':
     unittest.main()

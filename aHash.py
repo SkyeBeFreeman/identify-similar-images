@@ -10,11 +10,11 @@ def getHashCode(img, size = (8, 8)):
         for j in range(size[1]):
             pixel.append(img.getpixel((i, j)))
 
-    avg = sum(pixel) / len(pixel)
+    mean = sum(pixel) / len(pixel)
 
     result = []
     for i in pixel:
-        if i > avg:
+        if i > mean:
             result.append(1)
         else:
             result.append(0)

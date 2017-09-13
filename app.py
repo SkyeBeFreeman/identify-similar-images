@@ -33,3 +33,6 @@ if __name__ == '__main__':
 
     # aHash Calculation
     print('依据平均哈希算法计算相似度：{}/{}'.format(ah.calaHashSimilarity(img1, img2), 64))
+
+    # aHash Calculation
+    print('依据感知哈希算法计算相似度：{}/{}'.format(ph.calpHashSimilarity(img1, img2), 64))
