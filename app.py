@@ -2,6 +2,7 @@ from PIL import Image
 from multiprocessing import Process
 import histogram as htg
 import aHash as ah
+import pHash as ph
 
 if __name__ == '__main__':
 
