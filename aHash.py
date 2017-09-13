@@ -29,6 +29,7 @@ def compHashCode(hc1, hc2):
             cnt += 1
     return cnt
 
+# 计算平均哈希算法相似度
 def calaHashSimilarity(img1, img2):
     img1 = regularizeImage(img1)
     img2 = regularizeImage(img2)
