@@ -1,4 +1,5 @@
 import math
+import unittest
 
 # 正则化图像
 def regularizeImage(img, size = (32, 32)):
@@ -43,20 +44,20 @@ def getTranspose(matrix):
 # 计算矩阵乘法
 def getMultiply(matrix1, matrix2):
     new_matrix = []
-	for i in range(len(matrix1)):
-		value = []
-		for j in range(len(matrix2[i])): 
-			ans = 0.0
-			for h in range(len(matrix1[i])):
-				ans += matrix1[i][h] * matrix2[h][j]
-			value.append(ans)
-		new_matrix.append(value)
-	return new_matrix
+    for i in range(len(matrix1)):
+        value = []
+        for j in range(len(matrix2[i])): 
+            ans = 0.0
+            for h in range(len(matrix1[i])):
+                ans += matrix1[i][h] * matrix2[h][j]
+            value.append(ans)
+        new_matrix.append(value)
+    return new_matrix
 
 # 计算DCT
 def DCT(matrix):
     length = len(matrix)
-	A = getCoefficient(length)
+    A = getCoefficient(length)
     AT = getTranspose(A)
     temp = getMultiply(A, matrix)
     DCT_matrix = getMultiply(matrix, AT)
@@ -69,6 +70,12 @@ def submatrix_list(matrix, size = (8, 8)):
         for j in range(size[2]):
             value.append(matrix[i][j])
     return value
+
+# 计算hash值
+def getHashCode(sub_list):
+    length = len(sub_list)
+    mean = sum(sub_list) / length
+    return mean
 
 # 计算感知哈希算法相似度
 def calpHashSimilarity(img1, img2):
@@ -84,8 +91,16 @@ def calpHashSimilarity(img1, img2):
     sub_list1 = submatrix_list(DCT1)
     sub_list2 = submatrix_list(DCT2)
 
-    hc1 = getHashCode(img1)
-    hc2 = getHashCode(img2)
+    hc1 = getHashCode(sub_list1)
+    hc2 = getHashCode(sub_list2)
     return compHashCode(hc1, hc2)
+
+# 单元测试
+class TestpHash(unittest.TestCase):
+    def test_getHashCode(self):
+        self.assertEqual(getHashCode([1, 2, 3]), 2.0)
+
+if __name__ == '__main__':
+    unittest.main()
 
 __all__ = ['calpHashSimilarity']
