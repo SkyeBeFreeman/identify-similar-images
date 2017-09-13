@@ -3,6 +3,7 @@ from multiprocessing import Process
 import histogram as htg
 import aHash as ah
 import pHash as ph
+import dHash as dh
 
 if __name__ == '__main__':
 
@@ -34,5 +35,8 @@ if __name__ == '__main__':
     # aHash Calculation
     print('依据平均哈希算法计算相似度：{}/{}'.format(ah.calaHashSimilarity(img1, img2), 64))
 
-    # aHash Calculation
+    # pHash Calculation
     print('依据感知哈希算法计算相似度：{}/{}'.format(ph.calpHashSimilarity(img1, img2), 64))
+
+    # dHash Calculation
+    print('依据差异哈希算法计算相似度：{}/{}'.format(dh.caldHashSimilarity(img1, img2), 64))
