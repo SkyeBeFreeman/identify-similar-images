@@ -18,16 +18,33 @@ def getMatrix(img):
 # 计算系数矩阵
 def getCoefficient(length):
     matrix = []
-    sqr = math.sqrt(1 / length)
+    sqr = 1.0 / math.sqrt(length)
     value = []
     for i in range(length):
         value.append(sqr)
     matrix.append(value)
     for i in range(1, length):
         value = []
-        for j in range(0, n):
+        for j in range(0, length):
             value.append(math.sqrt(2.0 / length) * math.cos(i * math.pi * (j + 0.5) / length))
         matrix.append(value)
+    return matrix
+
+# 计算矩阵转秩
+def getTranspose(matrix):
+    new_matrix = []
+    for i in range(len(matrix)):
+        value = []
+        for j in range(len(matrix[i])):
+            value.append(matrix[j], [i])
+        new_matrix.append(value)
+    return new_matrix
+
+# 计算DCT
+def DCT(matrix):
+    length = len(matrix)
+	A = getCoefficient(length)
+    AT = getTranspose(A)
 
 # 计算感知哈希算法相似度
 def calpHashSimilarity(img1, img2):
